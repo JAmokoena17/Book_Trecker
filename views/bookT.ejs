@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>My Books</h1>
+    <% if (books.length === 0) { %>
+    <p>No books added yet.</p>
+<% } %>
+    <div class="nav-links">
+        <a href="/bookT/new">📚 Add New Book</a>
+        <a href="/bookT?sort=rating">⭐ Sort by Rating</a>
+        <a href="/bookT?sort=date">📅 Sort by Date</a>
+    </div>
+    <ul class="books-list">
+      <% books.forEach(book => { %>
+        <li class="book-card">
+          <% if (book.isbn) { %>
+            <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg" alt="<%= book.title %> Cover">
+          <% } %>
+          <h3><%= book.title %></h3>
+          <p><strong>Author:</strong> <%= book.author %></p>
+          <% if (book.rating) { %>
+            <p><strong>Rating:</strong> <%= book.rating %> ⭐</p>
+          <% } %>
+          <% if (book.noted) { %>
+            <p><strong>Notes:</strong> <%= book.noted %></p>
+          <% } %>
+          <div class="book-actions">
+            <a href="/bookT/<%= book.id %>/edit">Edit</a>
+            <form action="/bookT/<%= book.id %>/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+</div>
+</body>
+</html>

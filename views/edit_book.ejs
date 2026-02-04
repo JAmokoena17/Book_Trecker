@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Book</h1>
+        <form action="/bookT/<%= book.id %>" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" name="title" type="text" value="<%= book.title %>" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input id="author" name="author" type="text" value="<%= book.author %>">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input id="rating" name="rating" type="number" value="<%= book.rating %>">
+            </div>
+            <div class="form-group">
+                <label for="noted">Notes</label>
+                <input id="noted" name="noted" type="text" value="<%= book.noted %>">
+            </div>
+            <div class="form-group">
+                <label for="date_read">Date Read</label>
+                <input id="date_read" name="date_read" type="date" value="<%= book.date_read %>">
+            </div>
+            <button type="submit">Update Book</button>
+        </form>
+    </div>
+</body>
+</html>
